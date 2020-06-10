@@ -25,6 +25,16 @@ Custom ZSH plugin to generate random Quotes(nerd, funny, love, inspire).
    funny
    ```
 
+**Sample outputs**
+
+![Sample images](static/nerd.png)
+
+![Sample images](static/funny.png)
+
+![Sample images](static/love.png)
+
+![Sample images](static/inspire.png)
+
 ## TODO
 
 - [ ] Add more categories
