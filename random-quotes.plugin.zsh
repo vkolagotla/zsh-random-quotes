@@ -13,7 +13,7 @@
 
 # programming and tech quotes
 function nerd {
-    #emulate -L zsh
+
     local tech_quotes=(
         # Linus Torvalds
         # https://en.wikiquote.org/wiki/Linus_Torvalds
@@ -193,7 +193,6 @@ function nerd {
 
 # inspiring quotes
 function inspire {
-    emulate -L zsh
 
     local Q=$(curl -s --connect-timeout 2 "http://www.quotationspage.com/random.php" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "dt ")
 
@@ -205,7 +204,6 @@ function inspire {
 
 # love quotes
 function love {
-    emulate -L zsh
 
     local Q=$(curl -s --connect-timeout 2 "https://www.generatormix.com/random-love-quotes" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "<blockquote" | sed -e 's/<\/blockquote>.*//g')
     Q=${Q#*'<blockquote class="text-left">'}
@@ -219,7 +217,6 @@ function love {
 
 # funny quotes
 function funny {
-    emulate -L zsh
 
     local Q=$(curl -s --connect-timeout 2 "https://www.generatormix.com/random-funny-quotes" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "<blockquote" | sed -e 's/<\/blockquote>.*//g')
     Q=${Q#*'<blockquote class="text-left">'}
