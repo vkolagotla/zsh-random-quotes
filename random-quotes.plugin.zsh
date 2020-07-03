@@ -14,7 +14,7 @@
 # programming and tech quotes
 function nerd {
     #emulate -L zsh
-    tech_quotes=(
+    local tech_quotes=(
         # Linus Torvalds
         # https://en.wikiquote.org/wiki/Linus_Torvalds
         "Talk is cheap. Show me the code.-Linus Torvalds"
@@ -183,10 +183,10 @@ function nerd {
     
     )
 
-    Q=${tech_quotes[$(($RANDOM % ${#tech_quotes[@]} + 1 ))]}
+    local Q=${tech_quotes[$(($RANDOM % ${#tech_quotes[@]} + 1 ))]}
     
-    TXT=`echo $Q | awk -F'-' '{print $1}'`
-    WHO=`echo $Q | awk -F'-' '{print $2}'`
+    local TXT=`echo $Q | awk -F'-' '{print $1}'`
+    local WHO=`echo $Q | awk -F'-' '{print $2}'`
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{2}${TXT}%f”"
 }
@@ -195,10 +195,10 @@ function nerd {
 function inspire {
     emulate -L zsh
 
-    Q=$(curl -s --connect-timeout 2 "http://www.quotationspage.com/random.php" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "dt ")
+    local Q=$(curl -s --connect-timeout 2 "http://www.quotationspage.com/random.php" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "dt ")
 
-    TXT=$(echo "$Q" | sed -e 's/<\/dt>.*//g' -e 's/.*html//g' -e 's/^[^a-zA-Z]*//' -e 's/<\/a..*$//g')
-    WHO=$(echo "$Q" | sed -e 's/.*\/quotes\///g' -e 's/<.*//g' -e 's/.*">//g')
+    local TXT=$(echo "$Q" | sed -e 's/<\/dt>.*//g' -e 's/.*html//g' -e 's/^[^a-zA-Z]*//' -e 's/<\/a..*$//g')
+    local WHO=$(echo "$Q" | sed -e 's/.*\/quotes\///g' -e 's/<.*//g' -e 's/.*">//g')
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{3}${TXT}%f”"
 }
@@ -207,11 +207,11 @@ function inspire {
 function love {
     emulate -L zsh
 
-    Q=$(curl -s --connect-timeout 2 "https://www.generatormix.com/random-love-quotes" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "<blockquote" | sed -e 's/<\/blockquote>.*//g')
+    local Q=$(curl -s --connect-timeout 2 "https://www.generatormix.com/random-love-quotes" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "<blockquote" | sed -e 's/<\/blockquote>.*//g')
     Q=${Q#*'<blockquote class="text-left">'}
 
-    TXT=${Q%' - <span class="blue-text">'*}
-    WHO=${Q#*'- <span class="blue-text">'}
+    local TXT=${Q%' - <span class="blue-text">'*}
+    local WHO=${Q#*'- <span class="blue-text">'}
     WHO=${WHO%"</span>"*}
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{1}${TXT}%f”"
@@ -221,11 +221,11 @@ function love {
 function funny {
     emulate -L zsh
 
-    Q=$(curl -s --connect-timeout 2 "https://www.generatormix.com/random-funny-quotes" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "<blockquote" | sed -e 's/<\/blockquote>.*//g')
+    local Q=$(curl -s --connect-timeout 2 "https://www.generatormix.com/random-funny-quotes" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "<blockquote" | sed -e 's/<\/blockquote>.*//g')
     Q=${Q#*'<blockquote class="text-left">'}
 
-    TXT=${Q%' - <span class="blue-text">'*}
-    WHO=${Q#*'- <span class="blue-text">'}
+    local TXT=${Q%' - <span class="blue-text">'*}
+    local WHO=${Q#*'- <span class="blue-text">'}
     WHO=${WHO%"</span>"*}
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{6}${TXT}%f”"
