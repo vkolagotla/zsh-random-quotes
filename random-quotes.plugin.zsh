@@ -227,3 +227,10 @@ function funny {
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{6}${TXT}%f”"
 }
+
+# random facts
+function facts {
+    local fact=$(curl -s --connect-timeout 2 "http://randomfactgenerator.net/" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "<div id='z'" | sed -e 's|<br/>||g' | sed -e "s|<div id='z'>||g")
+
+    [[ -n "$fact" ]] && print -P "“%F{6}${fact}%f”"
+}
