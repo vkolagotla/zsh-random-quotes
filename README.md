@@ -42,7 +42,7 @@ Custom ZSH plugin to generate random Quotes and Facts(nerd, funny, love, inspire
 
 - [ ] Add more categories
 
-## Based on
+## Inspired from
 
 * https://github.com/oldratlee/hacker-quotes
 * https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/rand-quote
