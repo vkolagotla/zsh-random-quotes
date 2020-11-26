@@ -1,25 +1,31 @@
-# random-quotes
+# zsh-random-quotes
 
-Custom ZSH plugin to generate random Quotes and Facts(nerd, funny, love, inspire, facts).
+Custom [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) plugin to generate random Quotes and Facts(nerd, funny, love, inspire, facts).
 
 ## How to use?
 
 1. Clone the repo into your custom plugins folder, usually at (~/.oh-my-zsh/custom/plugins/)
 
    ```bash
-   git clone https://gitlab.com/vkolagotla/random-quotes.git ~/.oh-my-zsh/custom/plugins/random-quotes
+   git clone https://gitlab.com/vkolagotla/zsh-random-quotes.git ~/.oh-my-zsh/custom/plugins/zsh-random-quotes
    ```
 
-2. Add `random-quotes` to .zshrc plugin list, usually at (~/.zshrc)
+2. Add `zsh-random-quotes` to .zshrc plugins list, usually at (~/.zshrc)
 
    ```
-   plugins=(... random-quotes)
+   plugins=(... zsh-random-quotes)
    ```
 
-3. Type one of the words/commands in your terminal
+3. Source .zshrc file
 
    ```bash
-   nerd
+   source ~/.zshrc
+   ```
+   
+4. Type any of the following command in your terminal
+
+   ```bash
+   nerd 
    inspire
    love
    funny
@@ -50,7 +56,5 @@ Custom ZSH plugin to generate random Quotes and Facts(nerd, funny, love, inspire
 ## Sources
 
 * https://github.com/oldratlee/hacker-quotes
-* http://www.quotationspage.com/random.php
-* https://www.generatormix.com/random-love-quotes
-* https://www.generatormix.com/random-funny-quotes
+* https://www.generatormix.com/
 * http://randomfactgenerator.net/
