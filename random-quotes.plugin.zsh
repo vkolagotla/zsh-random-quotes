@@ -194,10 +194,12 @@ function nerd {
 # inspiring quotes
 function inspire {
 
-    local Q=$(curl -s --connect-timeout 2 "http://www.quotationspage.com/random.php" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "dt ")
+    local Q=$(curl -s --connect-timeout 2 "https://www.generatormix.com/random-inspirational-quotes" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "<blockquote" | sed -e 's/<\/blockquote>.*//g')
+    Q=${Q#*'<blockquote class="text-left">'}
 
-    local TXT=$(echo "$Q" | sed -e 's/<\/dt>.*//g' -e 's/.*html//g' -e 's/^[^a-zA-Z]*//' -e 's/<\/a..*$//g')
-    local WHO=$(echo "$Q" | sed -e 's/.*\/quotes\///g' -e 's/<.*//g' -e 's/.*">//g')
+    local TXT=${Q%" --"*}
+    TXT=${TXT:1:-1}
+    local WHO=${Q#*'-- '}
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{3}${TXT}%f”"
 }
