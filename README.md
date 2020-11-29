@@ -34,15 +34,15 @@ Custom [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) plugin to generate random
 
 **Sample outputs**
 
-![Sample images](static/nerd.png)
-
-![Sample images](static/funny.png)
-
 ![Sample images](static/love.png)
 
 ![Sample images](static/inspire.png)
 
 ![Sample images](static/facts.png)
+
+![Sample images](static/nerd.png)
+
+![Sample images](static/funny.png)
 
 ## TODO
 
