@@ -58,3 +58,9 @@ Custom [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) plugin to generate random
 * https://github.com/oldratlee/hacker-quotes
 * https://www.generatormix.com/
 * http://randomfactgenerator.net/
+
+## About LICENSE
+
+I created this plugin for personal use. The plugin [LICENSE](LICENSE) is only valid for the code. Since the quotes are fetched from an external source(online), i do not own that data. I would suggest you to not use the plugin for any commercial purpose, unless you have the permission to do so from those respective data sources.
+
+[Go UP⬆️](#zsh-random-quotes)
