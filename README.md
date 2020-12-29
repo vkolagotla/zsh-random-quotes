@@ -1,8 +1,16 @@
 # zsh-random-quotes
 
-Custom [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) plugin to generate random Quotes and Facts(nerd, funny, love, inspire, facts).
+Custom [zsh](https://www.zsh.org/) plugin to generate random Quotes and Facts(nerd, funny, love, inspire, facts).
 
 ## How to use?
+
+It's super easy to use. Just type any of `nerd/funny/love/inspire/facts` in your terminal and enjoy.
+
+## How to Install?
+
+Depending on the plugin manager you use, add following to your `.zshrc` file and source it.
+
+### [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
 
 1. Clone the repo into your custom plugins folder, usually at (~/.oh-my-zsh/custom/plugins/)
 
@@ -12,25 +20,33 @@ Custom [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) plugin to generate random
 
 2. Add `zsh-random-quotes` to .zshrc plugins list, usually at (~/.zshrc)
 
-   ```
+   ```shell
    plugins=(... zsh-random-quotes)
    ```
 
-3. Source .zshrc file
+### [Zplug](https://github.com/zplug/zplug)
 
-   ```bash
-   source ~/.zshrc
-   ```
-   
-4. Type any of the following command in your terminal
+```shell
+zplug "vkolagotla/zsh-random-quotes"
+```
 
-   ```bash
-   nerd 
-   inspire
-   love
-   funny
-   facts
-   ```
+### [Antigen](https://github.com/zsh-users/antigen)
+
+```shell
+antigen bundle "vkolagotla/zsh-random-quotes"
+```
+
+### [Zgen](https://github.com/tarjoilija/zgen)
+
+```shell
+zgen load "vkolagotla/zsh-random-quotes"
+```
+
+Source .zshrc file
+
+```shell
+source ~/.zshrc
+```
 
 **Sample outputs**
 
