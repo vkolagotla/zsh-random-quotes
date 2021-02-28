@@ -196,9 +196,13 @@ function inspire {
 
     local Q=$(curl -s --connect-timeout 2 "https://www.generatormix.com/random-inspirational-quotes" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "<blockquote" | sed -e 's/<\/blockquote>.*//g')
     Q=${Q#*'<blockquote class="text-left">'}
-
+    # remove substring '#039;' from the quote
+    WORDTOREMOVE="#039;"
+    Q=${Q//$WORDTOREMOVE/}
+    # remove everything after '--'(gets the actual quote)
     local TXT=${Q%" --"*}
     TXT=${TXT:1:-1}
+    # remove everything before '--'(get the source name)
     local WHO=${Q#*'-- '}
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{3}${TXT}%f”"
@@ -234,5 +238,5 @@ function funny {
 function facts {
     local fact=$(curl -s --connect-timeout 2 "http://randomfactgenerator.net/" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "<div id='z'" | sed -e 's|<br/>||g' | sed -e "s|<div id='z'>||g")
 
-    [[ -n "$fact" ]] && print -P "“%F{6}${fact}%f”"
+    [[ -n "$fact" ]] && print -P "“%F{5}${fact}%f”"
 }
