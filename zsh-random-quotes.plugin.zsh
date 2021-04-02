@@ -11,6 +11,17 @@
 # 8 -dark-gray
 # 9 -pink
 
+# util functions
+function 39str_cleaner() {
+    # remove substring '#039;', '#39;' from the quote
+    Q=$1
+    WORDTOREMOVE_1="#39;"
+    WORDTOREMOVE_2="#039;"
+    Q=${Q//$WORDTOREMOVE_1/}
+    Q=${Q//$WORDTOREMOVE_2/}
+    echo $Q
+}
+
 # programming and tech quotes
 function nerd {
 
@@ -196,13 +207,12 @@ function inspire {
 
     local Q=$(curl -s --connect-timeout 2 "https://www.generatormix.com/random-inspirational-quotes" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "<blockquote" | sed -e 's/<\/blockquote>.*//g')
     Q=${Q#*'<blockquote class="text-left">'}
-    # remove substring '#039;' from the quote
-    WORDTOREMOVE="#039;"
-    Q=${Q//$WORDTOREMOVE/}
-    # remove everything after '--'(gets the actual quote)
+    # remove substring '#039;', '#39;' from the quote
+    Q=$(39str_cleaner $Q)
+    # remove everything after ' --'(gets the actual quote)
     local TXT=${Q%" --"*}
     TXT=${TXT:1:-1}
-    # remove everything before '--'(get the source name)
+    # remove everything before '-- '(gets the source name)
     local WHO=${Q#*'-- '}
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{3}${TXT}%f”"
@@ -213,6 +223,8 @@ function love {
 
     local Q=$(curl -s --connect-timeout 2 "https://www.generatormix.com/random-love-quotes" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "<blockquote" | sed -e 's/<\/blockquote>.*//g')
     Q=${Q#*'<blockquote class="text-left">'}
+    # remove substring '#039;', '#39;' from the quote
+    Q=$(39str_cleaner $Q)
 
     local TXT=${Q%' - <span class="blue-text">'*}
     local WHO=${Q#*'- <span class="blue-text">'}
@@ -226,6 +238,8 @@ function funny {
 
     local Q=$(curl -s --connect-timeout 2 "https://www.generatormix.com/random-funny-quotes" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "<blockquote" | sed -e 's/<\/blockquote>.*//g')
     Q=${Q#*'<blockquote class="text-left">'}
+    # remove substring '#039;', '#39;' from the quote
+    Q=$(39str_cleaner $Q)
 
     local TXT=${Q%' - <span class="blue-text">'*}
     local WHO=${Q#*'- <span class="blue-text">'}
