@@ -6,7 +6,7 @@
 # Last Updated: 14-04-2021                                         	   //   \ \
 # Requires    : zsh, oh-my-zsh                                        (|     | )
 # Category    : zsh plugin                                       	 /'\_   _/`\\
-# Version     : v0.1.0                                               \___)=(___//
+# Version     : v0.2.0                                               \___)=(___//
 ##################################################################################
 # Description : shows some random quotes and facts
 # Usage       : copy repo to zsh custom plugins dir
