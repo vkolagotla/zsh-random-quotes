@@ -1,4 +1,17 @@
-# custome zsh plug in for random quotes
+#!/bin/zsh
+##################################################################################
+# Shellscript : zsh-random-quotes.plugin.zsh         					 .--.
+# Author      : Venkata Kolagotla <venkata.kolagotla@gmail.com>         |ö_ö |
+# Created     : 10-06-2020                                              |\ü/ |
+# Last Updated: 14-04-2021                                         	   //   \ \
+# Requires    : zsh, oh-my-zsh                                        (|     | )
+# Category    : zsh plugin                                       	 /'\_   _/`\\
+# Version     : v0.1.0                                               \___)=(___//
+##################################################################################
+# Description : shows some random quotes and facts
+# Usage       : copy repo to zsh custom plugins dir
+##################################################################################
+
 # shell color codes for printing
 # 0 -black
 # 1 -red
