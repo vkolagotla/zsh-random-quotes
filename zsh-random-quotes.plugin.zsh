@@ -1,28 +1,29 @@
 #!/bin/zsh
 ##################################################################################
-# Shellscript : zsh-random-quotes.plugin.zsh         					 .--.
-# Author      : Venkata Kolagotla <venkata.kolagotla@gmail.com>         |ö_ö |
-# Created     : 10-06-2020                                              |\ü/ |
-# Last Updated: 14-04-2021                                         	   //   \ \
-# Requires    : zsh, oh-my-zsh                                        (|     | )
-# Category    : zsh plugin                                       	 /'\_   _/`\\
-# Version     : v0.2.0                                               \___)=(___//
+# Shellscript : zsh-random-quotes.plugin.zsh                             .--.    #
+# Author      : Venkata Kolagotla <venkata.kolagotla@gmail.com>         |ö_ö |   #
+# Created     : 10-06-2020                                              |\ü/ |   #
+# Last Updated: 17-07-2021                                             //   \ \  #
+# Requires    : zsh, oh-my-zsh, curl                                  (|     | ) #
+# Category    : zsh plugin                                           /'\_   _/`\\#
+# Version     : v0.2.1                                               \___)=(___//#
 ##################################################################################
-# Description : shows some random quotes and facts
-# Usage       : copy repo to zsh custom plugins dir
+# Description : print random quotes and facts.
+#               type the quote type to get it or facts
+#               custome zsh plug in for random quotes
+#               shell color codes for printing
+#               0 -black
+#               1 -red
+#               2 -green
+#               3 -orange
+#               4 -blue
+#               5 -purple
+#               6 -sky-blue
+#               7 -light-gray
+#               8 -dark-gray
+#               9 -pink
+# Usage       : inspire/love/funny/nerd/facts
 ##################################################################################
-
-# shell color codes for printing
-# 0 -black
-# 1 -red
-# 2 -green
-# 3 -orange
-# 4 -blue
-# 5 -purple
-# 6 -sky-blue
-# 7 -light-gray
-# 8 -dark-gray
-# 9 -pink
 
 # util functions
 function 39str_cleaner() {
@@ -222,10 +223,9 @@ function inspire {
     Q=${Q#*'<blockquote class="text-left">'}
     # remove substring '#039;', '#39;' from the quote
     Q=$(39str_cleaner $Q)
-    # remove everything after ' --'(gets the actual quote)
+
     local TXT=${Q%" --"*}
     TXT=${TXT:1:-1}
-    # remove everything before '-- '(gets the source name)
     local WHO=${Q#*'-- '}
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{3}${TXT}%f”"
