@@ -1,12 +1,13 @@
 #!/bin/zsh
 ##################################################################################
 # Shellscript : zsh-random-quotes.plugin.zsh                             .--.    #
-# Author      : Venkata Kolagotla <venkata.kolagotla@gmail.com>         |ö_ö |   #
+# Author      : Venkata Kolagotla <vkolagotla@pm.me>                    |ö_ö |   #
 # Created     : 10-06-2020                                              |\ü/ |   #
-# Last Updated: 17-07-2021                                             //   \ \  #
+# Last Updated: 25-02-2022                                             //   \ \  #
 # Requires    : zsh, oh-my-zsh, curl                                  (|     | ) #
 # Category    : zsh plugin                                           /'\_   _/`\\#
-# Version     : v0.2.1                                               \___)=(___//#
+# Version     : v0.2.2                                               \___)=(___//#
+# License     : GNU GPLv3                                                        #
 ##################################################################################
 # Description : print random quotes and facts.
 #               type the quote type to get it or facts
@@ -205,13 +206,13 @@ function nerd {
         "A Computer is a state machine. Threads are for people who can't program state machines.-Alan Cox"
         "Not everything worth doing is worth doing well.-Tom West"
         "Peace comes from thinking.-N.S.A"
-    
+
     )
 
-    local Q=${tech_quotes[$(($RANDOM % ${#tech_quotes[@]} + 1 ))]}
-    
-    local TXT=`echo $Q | awk -F'-' '{print $1}'`
-    local WHO=`echo $Q | awk -F'-' '{print $2}'`
+    local Q=${tech_quotes[$(($RANDOM % ${#tech_quotes[@]} + 1))]}
+
+    local TXT=$(echo $Q | awk -F'-' '{print $1}')
+    local WHO=$(echo $Q | awk -F'-' '{print $2}')
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{2}${TXT}%f”"
 }
