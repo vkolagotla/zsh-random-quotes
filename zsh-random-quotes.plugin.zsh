@@ -1,13 +1,12 @@
 #!/bin/zsh
 ##################################################################################
 # Shellscript : zsh-random-quotes.plugin.zsh                             .--.    #
-# Author      : Venkata Kolagotla <vkolagotla@pm.me>                    |ö_ö |   #
+# Author      : Venkata Kolagotla <venkata.kolagotla@gmail.com>         |ö_ö |   #
 # Created     : 10-06-2020                                              |\ü/ |   #
-# Last Updated: 25-02-2022                                             //   \ \  #
+# Last Updated: 10-06-2022                                             //   \ \  #
 # Requires    : zsh, oh-my-zsh, curl                                  (|     | ) #
 # Category    : zsh plugin                                           /'\_   _/`\\#
-# Version     : v0.2.2                                               \___)=(___//#
-# License     : GNU GPLv3                                                        #
+# Version     : v0.2.1                                               \___)=(___//#
 ##################################################################################
 # Description : print random quotes and facts.
 #               type the quote type to get it or facts
@@ -27,14 +26,22 @@
 ##################################################################################
 
 # util functions
+# function to remove substrings '#039;'and '#39;' from the quotes
 function 39str_cleaner() {
-    # remove substring '#039;', '#39;' from the quote
     Q=$1
     WORDTOREMOVE_1="#39;"
     WORDTOREMOVE_2="#039;"
     Q=${Q//$WORDTOREMOVE_1/}
     Q=${Q//$WORDTOREMOVE_2/}
     echo $Q
+}
+# if $TXT or $WHO is empty then print "Sorry, couldn't get a quote😞, try again..."
+function quote_null_check() {
+    if [[ -z $TXT ]] || [[ -z $WHO ]]; then
+        echo -e "\033[1;31mSorry, couldn't get a quote😞 try again...\033[0m"
+    else
+        :
+    fi
 }
 
 # programming and tech quotes
@@ -228,6 +235,8 @@ function inspire {
     local TXT=${Q%" --"*}
     TXT=${TXT:1:-1}
     local WHO=${Q#*'-- '}
+    # check if $TXT or $WHO is empty
+    quote_null_check
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{3}${TXT}%f”"
 }
@@ -243,6 +252,8 @@ function love {
     local TXT=${Q%' - <span class="blue-text">'*}
     local WHO=${Q#*'- <span class="blue-text">'}
     WHO=${WHO%"</span>"*}
+    # check if $TXT or $WHO is empty
+    quote_null_check
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{1}${TXT}%f”"
 }
@@ -258,6 +269,8 @@ function funny {
     local TXT=${Q%' - <span class="blue-text">'*}
     local WHO=${Q#*'- <span class="blue-text">'}
     WHO=${WHO%"</span>"*}
+    # check if $TXT or $WHO is empty
+    quote_null_check
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{6}${TXT}%f”"
 }
