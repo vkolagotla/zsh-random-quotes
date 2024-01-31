@@ -3,10 +3,10 @@
 # Shellscript : zsh-random-quotes.plugin.zsh                             .--.    #
 # Author      : Venkata Kolagotla <venkata.kolagotla@gmail.com>         |ö_ö |   #
 # Created     : 10-06-2020                                              |\ü/ |   #
-# Last Updated: 10-06-2022                                             //   \ \  #
+# Last Updated: 31-01-2024                                             //   \ \  #
 # Requires    : zsh, oh-my-zsh, curl                                  (|     | ) #
 # Category    : zsh plugin                                           /'\_   _/`\\#
-# Version     : v0.2.1                                               \___)=(___//#
+# Version     : v0.3.0                                               \___)=(___//#
 ##################################################################################
 # Description : print random quotes and facts.
 #               type the quote type to get it or facts
@@ -94,8 +94,8 @@ function nerd {
         "The use of a program to prove the 4-color theorem will not change mathematics -it merely demonstrates that the theorem, a challenge for a century, is probably not important to mathematics.-Alan J. Perlis"
         "The most important computer is the one that rages in our skulls and ever seeks that satisfactory external emulator. The standarization of real computers would be a disaster -and so it probably won't happen.-Alan J. Perlis"
         "Structured Programming supports the law of the excluded middle.-Alan J. Perlis"
-        "Re graphics: A picture is worth 10K words -but only those to describe the picture. Hardly any sets of 10K words can be adequately described with pictures.-Alan J. Perlis"
-        "There are two ways to write error-free programs; only the third one works.-Alan J. Perlis"
+        "A picture is worth 10K words but only those to describe the picture. Hardly any sets of 10K words can be adequately described with pictures.-Alan J. Perlis"
+        "There are two ways to write errorfree programs, only the third one works.-Alan J. Perlis"
         "Some programming languages manage to absorb change, but withstand progress.-Alan J. Perlis"
         "You can measure a programmer's perspective by noting his attitude on the continuing vitality of FORTRAN.-Alan J. Perlis"
         "In software systems, it is often the early bird that makes the worm.-Alan J. Perlis"
@@ -277,7 +277,7 @@ function funny {
 
 # random facts
 function facts {
-    local fact=$(curl -s --connect-timeout 2 "http://randomfactgenerator.net/" | iconv -c -f ISO-8859-1 -t UTF-8 | grep -m 1 "<div id='z'" | sed -e 's|<br/>||g' | sed -e "s|<div id='z'>||g")
+    local fact=$(curl -s 'https://randomfactgenerator.net/' | awk -v RS='</div>' '/<div class='\''f'\''>/{gsub(/.*<div class='\''f'\''>/,""); print "- " $0}' | sed -e 's/$/\n/')
 
-    [[ -n "$fact" ]] && print -P "“%F{5}${fact}%f”"
+    [[ -n "$fact" ]] && print -P "%F{5}${fact}%f"
 }
