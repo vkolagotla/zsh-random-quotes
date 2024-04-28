@@ -3,10 +3,10 @@
 # Shellscript : zsh-random-quotes.plugin.zsh                             .--.    #
 # Author      : Venkata Kolagotla <venkata.kolagotla@gmail.com>         |ö_ö |   #
 # Created     : 10-06-2020                                              |\ü/ |   #
-# Last Updated: 31-01-2024                                             //   \ \  #
+# Last Updated: 28-04-2024                                             //   \ \  #
 # Requires    : zsh, oh-my-zsh, curl                                  (|     | ) #
 # Category    : zsh plugin                                           /'\_   _/`\\#
-# Version     : v0.3.0                                               \___)=(___//#
+# Version     : v0.3.1                                               \___)=(___//#
 ##################################################################################
 # Description : print random quotes and facts.
 #               type the quote type to get it or facts
@@ -236,7 +236,7 @@ function inspire {
     TXT=${TXT:1:-1}
     local WHO=${Q#*'-- '}
     # check if $TXT or $WHO is empty
-    quote_null_check
+    # quote_null_check
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{3}${TXT}%f”"
 }
@@ -253,7 +253,7 @@ function love {
     local WHO=${Q#*'- <span class="blue-text">'}
     WHO=${WHO%"</span>"*}
     # check if $TXT or $WHO is empty
-    quote_null_check
+    # quote_null_check
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{1}${TXT}%f”"
 }
@@ -270,7 +270,7 @@ function funny {
     local WHO=${Q#*'- <span class="blue-text">'}
     WHO=${WHO%"</span>"*}
     # check if $TXT or $WHO is empty
-    quote_null_check
+    # quote_null_check
 
     [[ -n "$WHO" && -n "$TXT" ]] && print -P "%F{7}${WHO}%f: “%F{6}${TXT}%f”"
 }
